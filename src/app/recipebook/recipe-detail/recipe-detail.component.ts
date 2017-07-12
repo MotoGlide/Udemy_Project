@@ -40,4 +40,9 @@ export class RecipeDetailComponent implements OnInit {
     //console.log(this.recipes);
   }
 
+  onDeleteRecipe(){
+    this.recipeService.deletedRecipe(this.id);
+    this.router.navigate(['/recipes']);
+  }
+
 }
