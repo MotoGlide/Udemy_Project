@@ -10,18 +10,19 @@ export class RecipeService{
     recipesChanged = new Subject<Recipe[]>();
 
     private recipes: Recipe[] = [
-        new Recipe('Tasty Schnitzel', 'A super-tasty Schnitzel - just awesome!', 'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg', 
+        new Recipe('Novae Corporation', 'Oliver Reelsen', 'https://upload.wikimedia.org/wikipedia/commons/9/9c/Golden_star.svg', 
         [
-            new Ingredient('Meat', 1),
-            new Ingredient('French Fries', 20)
+            new Ingredient('VMware', 1),
+            new Ingredient('HP SAID Renewal', 1),
+            new Ingredient('Trend', 25)
         ]),
-        new Recipe('Big Fat Burger', 'What else do you need to say?', 'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg', 
+        new Recipe('Cameron Memorial Community Hospital', 'Kristopher Keen', 'https://upload.wikimedia.org/wikipedia/en/f/f4/Free_Blue_Star.jpg', 
         [
-            new Ingredient('Buns', 2),
-            new Ingredient('Meat', 1),
-            new Ingredient('Pickle', 2),
-            new Ingredient('Ketchup', 1),
-            new Ingredient('Mustard', 1)
+            new Ingredient('Micorsoft', 2),
+            new Ingredient('Cisco SNTP', 16),
+            new Ingredient('Webex', 1),
+            new Ingredient('Cisco ECMU', 13),
+            new Ingredient('Cisco ANYSL', 1)
         ])
     ];
 
