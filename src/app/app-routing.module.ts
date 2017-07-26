@@ -7,7 +7,7 @@ import { HomeComponent } from './core/home/home.component';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
-    { path: 'clients', loadChildren: './recipebook/recipes.module#RecipesModule' },
+    { path: 'clients', loadChildren: './clients/client.module#ClientsModule' },
     { path: 'renewal-list', component: ShopListComponent },
     { path: 'tracker', component: TrackerComponent }
 ];

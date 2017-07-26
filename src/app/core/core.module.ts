@@ -6,7 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { AppRoutingModule } from '../app-routing.module';
 
 import { ShoppingListService } from '../shoplist/shopping-list.service';
-import { RecipeService } from '../recipebook/recipebook.service';
+import { ClientService } from '../clients/client.service';
 import { DataStorageService } from '../shared/data-storage.service';
 import { AuthService } from '../auth/auth.service';
 
@@ -25,7 +25,7 @@ import { AuthService } from '../auth/auth.service';
     ],
     providers: [
         ShoppingListService,
-        RecipeService,
+        ClientService,
         DataStorageService,
         AuthService
     ]

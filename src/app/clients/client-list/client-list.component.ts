@@ -2,19 +2,19 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router'
 import { Subscription } from 'rxjs/Subscription';
 
-import { Recipe } from '../recipebook.model';
-import { RecipeService } from '../recipebook.service';
+import { Recipe } from '../client.model';
+import { ClientService } from '../client.service';
 
 @Component({
-  selector: 'app-recipe-list',
-  templateUrl: './recipe-list.component.html',
-  styleUrls: ['./recipe-list.component.css']
+  selector: 'app-client-list',
+  templateUrl: './client-list.component.html',
+  styleUrls: ['./client-list.component.css']
 })
-export class RecipeListComponent implements OnInit, OnDestroy {
+export class ClientListComponent implements OnInit, OnDestroy {
   recipes:Recipe[];
   subscription: Subscription;
 
-  constructor(private recipeService: RecipeService,
+  constructor(private recipeService: ClientService,
               private router: Router,
               private route: ActivatedRoute) {
 

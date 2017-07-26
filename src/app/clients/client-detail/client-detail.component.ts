@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
-import { Recipe } from '../recipebook.model';
-import { RecipeService } from '../recipebook.service';
+import { Recipe } from '../client.model';
+import { ClientService } from '../client.service';
 
 @Component({
-  selector: 'app-recipe-detail',
-  templateUrl: './recipe-detail.component.html',
-  styleUrls: ['./recipe-detail.component.css']
+  selector: 'app-client-detail',
+  templateUrl: './client-detail.component.html',
+  styleUrls: ['./client-detail.component.css']
 })
-export class RecipeDetailComponent implements OnInit {
+export class ClientDetailComponent implements OnInit {
   recipe: Recipe;
   id: number;
   recipes:Recipe[];
 
-  constructor(private recipeService: RecipeService,
+  constructor(private recipeService: ClientService,
               private route: ActivatedRoute,
               private router: Router) {
 
@@ -42,7 +42,7 @@ export class RecipeDetailComponent implements OnInit {
 
   onDeleteRecipe(){
     this.recipeService.deletedRecipe(this.id);
-    this.router.navigate(['/recipes']);
+    this.router.navigate(['/clients']);
   }
 
 }
