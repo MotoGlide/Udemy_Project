@@ -2,12 +2,14 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
 import { ShopListComponent } from './shoplist/shoplist.component';
+import { TrackerComponent } from './tracker/tracker.component';
 import { HomeComponent } from './core/home/home.component';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
-    { path: 'recipes', loadChildren: './recipebook/recipes.module#RecipesModule' },
-    { path: 'shopping-list', component: ShopListComponent }
+    { path: 'clients', loadChildren: './recipebook/recipes.module#RecipesModule' },
+    { path: 'renewal-list', component: ShopListComponent },
+    { path: 'tracker', component: TrackerComponent }
 ];
 
 @NgModule({

@@ -8,10 +8,12 @@ import { SharedModule } from './shared/shared.module';
 import { ShoppingListModule } from './shoplist/shopping-list.module';
 import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
+import { TrackerComponent } from './tracker/tracker.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TrackerComponent
   ],
   imports: [
     BrowserModule,

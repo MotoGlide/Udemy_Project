@@ -6,8 +6,9 @@
 
         <div class="navbar-default">
             <ul class="nav navbar-nav">
-                <li routerLinkActive="active"><a routerLink="/recipes">Clients</a></li>
-                <li routerLinkActive="active"><a routerLink="/shopping-list">Renewal List</a></li>
+                <li routerLinkActive="active"><a routerLink="/clients">Clients</a></li>
+                <li routerLinkActive="active"><a routerLink="/renewal-list">Renewal List</a></li>
+                <li routerLinkActive="active"><a routerLink="/tracker">Tracker</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <ng-template [ngIf]="!authService.isAuthenticated()">
