@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router'
 import { Subscription } from 'rxjs/Subscription';
 
-import { Recipe } from '../client.model';
+import { Renewals } from '../client.model';
 import { ClientService } from '../client.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { ClientService } from '../client.service';
   styleUrls: ['./client-list.component.css']
 })
 export class ClientListComponent implements OnInit, OnDestroy {
-  recipes:Recipe[];
+  recipes:Renewals[];
   subscription: Subscription;
 
   constructor(private recipeService: ClientService,
@@ -23,7 +23,7 @@ export class ClientListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscription = this.recipeService.recipesChanged
       .subscribe(
-        (recipes: Recipe[]) => {
+        (recipes: Renewals[]) => {
           this.recipes = recipes;
         }
       );

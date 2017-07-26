@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
-import { Recipe } from '../client.model';
+import { Renewals } from '../client.model';
 import { ClientService } from '../client.service';
 
 @Component({
@@ -10,9 +10,9 @@ import { ClientService } from '../client.service';
   styleUrls: ['./client-detail.component.css']
 })
 export class ClientDetailComponent implements OnInit {
-  recipe: Recipe;
+  recipe: Renewals;
   id: number;
-  recipes:Recipe[];
+  recipes:Renewals[];
 
   constructor(private recipeService: ClientService,
               private route: ActivatedRoute,
@@ -31,7 +31,7 @@ export class ClientDetailComponent implements OnInit {
   }
 
   onAddToShoppingList(){
-    this.recipeService.addIngredientsToShoppingList(this.recipe.ingredients);
+    this.recipeService.addIngredientsToShoppingList(this.recipe.renewals);
   }
 
   onEditRecipe(){

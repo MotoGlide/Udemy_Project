@@ -3,7 +3,7 @@ import { Http, Response } from '@angular/http';
 import 'rxjs/Rx';
 
 import { ClientService } from '../clients/client.service';
-import { Recipe } from '../clients/client.model';
+import { Renewals } from '../clients/client.model';
 import { AuthService } from '../auth/auth.service';
 
 @Injectable()
@@ -24,17 +24,17 @@ export class DataStorageService {
         this.http.get('https://ng-recipe-book-39cac.firebaseio.com/recipes.json?auth=' + token)
             .map(
             (response: Response) => {
-                const recipes: Recipe[] = response.json();
+                const recipes: Renewals[] = response.json();
                 for (let recipe of recipes) {
-                    if (!recipe['ingredients']) {
-                        recipe['ingredients'] = [];
+                    if (!recipe['renewals']) {
+                        recipe['renewals'] = [];
                     }
                 }
                 return recipes;
             }
             )
             .subscribe(
-            (recipes: Recipe[]) => {
+            (recipes: Renewals[]) => {
                 this.recipeService.setRecipes(recipes);
             }
             );

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { Recipe } from '../../client.model';
+import { Renewals } from '../../client.model';
 
 @Component({
   selector: 'app-client-item',
@@ -8,7 +8,7 @@ import { Recipe } from '../../client.model';
   styleUrls: ['./client-item.component.css']
 })
 export class ClientItemComponent implements OnInit {
-  @Input() recipe: Recipe;
+  @Input() recipe: Renewals;
   @Input() index: number;
 
   ngOnInit() {

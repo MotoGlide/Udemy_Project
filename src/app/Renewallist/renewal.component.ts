@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
-import { Ingredient } from '../shared/ingredient.model';
+import { Renewal } from '../shared/renewal.model';
 import { RenewalListService } from './renewal-list.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { RenewalListService } from './renewal-list.service';
   styleUrls: ['./renewal.component.css']
 })
 export class RenewalListComponent implements OnInit, OnDestroy {
-  ingredients: Ingredient[];
+  renewals: Renewal[];
   private subscription: Subscription;
 
   constructor(private slService: RenewalListService) {
@@ -18,10 +18,10 @@ export class RenewalListComponent implements OnInit, OnDestroy {
    }
 
   ngOnInit() {
-    this.ingredients = this.slService.getIngredients();
+    this.renewals = this.slService.getIngredients();
     this.subscription = this.slService.ingredientsChanged
-      .subscribe((ingredients: Ingredient[]) => {
-        this.ingredients = ingredients; 
+      .subscribe((renewals: Renewal[]) => {
+        this.renewals = renewals; 
         }
     );
   }

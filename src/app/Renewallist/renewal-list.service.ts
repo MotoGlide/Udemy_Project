@@ -1,45 +1,45 @@
 import { EventEmitter } from '@angular/core';
 
-import { Ingredient } from '../shared/ingredient.model';
+import { Renewal } from '../shared/renewal.model';
 import { Subject } from 'rxjs/Subject';
 
 export class RenewalListService{
-    ingredientsChanged = new Subject<Ingredient[]>();
+    ingredientsChanged = new Subject<Renewal[]>();
     startedEditing = new Subject<number>();
-    private ingredients: Ingredient[] = [
-    // new Ingredient('Apples', 5),
-    // new Ingredient('Tomatoes', 10),
+    private renewals: Renewal[] = [
+    // new Renewal('Apples', 5),
+    // new Renewal('Tomatoes', 10),
   ];
 
   getIngredients(){
-      return this.ingredients.slice();
+      return this.renewals.slice();
   }
 
   getIngredient(index: number){
-    return this.ingredients[index];
+    return this.renewals[index];
   }
 
-  addIngredient(ingredient: Ingredient) {
-      this.ingredients.push(ingredient);
-      this.ingredientsChanged.next(this.ingredients.slice());
+  addIngredient(renewal: Renewal) {
+      this.renewals.push(renewal);
+      this.ingredientsChanged.next(this.renewals.slice());
   }
 
-  addIngredients(ingredients: Ingredient[]){
-    //   for (let ingredient of ingredients) {
-    //       this.addIngredient(ingredient);
+  addIngredients(renewals: Renewal[]){
+    //   for (let renewal of renewals) {
+    //       this.addIngredient(renewal);
     //   }
-    this.ingredients.push(...ingredients);
-    this.ingredientsChanged.next(this.ingredients.slice());
+    this.renewals.push(...renewals);
+    this.ingredientsChanged.next(this.renewals.slice());
   }
 
-  updateIngredient(index: number, newIngredient: Ingredient) {
-      this.ingredients[index] = newIngredient;
-      this.ingredientsChanged.next(this.ingredients.slice());
+  updateIngredient(index: number, newIngredient: Renewal) {
+      this.renewals[index] = newIngredient;
+      this.ingredientsChanged.next(this.renewals.slice());
   }
 
   deleteIngredient(index: number){
-      this.ingredients.splice(index, 1);
-      this.ingredientsChanged.next(this.ingredients.slice());
+      this.renewals.splice(index, 1);
+      this.ingredientsChanged.next(this.renewals.slice());
   }
     
 }

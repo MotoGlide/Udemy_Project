@@ -1,34 +1,34 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 
-import { Recipe } from './client.model';
-import { Ingredient } from '../shared/ingredient.model'
+import { Renewals } from './client.model';
+import { Renewal } from '../shared/renewal.model'
 import { RenewalListService } from '../renewallist/renewal-list.service'
 
 @Injectable()
 export class ClientService{
-    recipesChanged = new Subject<Recipe[]>();
+    recipesChanged = new Subject<Renewals[]>();
 
-    private recipes: Recipe[] = [
-        new Recipe('Novae Corporation', 'Oliver Reelsen', 'https://upload.wikimedia.org/wikipedia/commons/9/9c/Golden_star.svg', 
+    private recipes: Renewals[] = [
+        new Renewals('Novae Corporation', 'Oliver Reelsen', 'https://upload.wikimedia.org/wikipedia/commons/9/9c/Golden_star.svg', 
         [
-            new Ingredient('VMware', 1),
-            new Ingredient('HP SAID Renewal', 1),
-            new Ingredient('Trend', 25)
+            new Renewal('VMware', 1),
+            new Renewal('HP SAID Renewal', 1),
+            new Renewal('Trend', 25)
         ]),
-        new Recipe('Cameron Memorial Community Hospital', 'Kristopher Keen', 'https://upload.wikimedia.org/wikipedia/en/f/f4/Free_Blue_Star.jpg', 
+        new Renewals('Cameron Memorial Community Hospital', 'Kristopher Keen', 'https://upload.wikimedia.org/wikipedia/en/f/f4/Free_Blue_Star.jpg', 
         [
-            new Ingredient('Micorsoft', 2),
-            new Ingredient('Cisco SNTP', 16),
-            new Ingredient('Webex', 1),
-            new Ingredient('Cisco ECMU', 13),
-            new Ingredient('Cisco ANYSL', 1)
+            new Renewal('Micorsoft', 2),
+            new Renewal('Cisco SNTP', 16),
+            new Renewal('Webex', 1),
+            new Renewal('Cisco ECMU', 13),
+            new Renewal('Cisco ANYSL', 1)
         ])
     ];
 
     constructor(private slService: RenewalListService){}
 
-    setRecipes(recipes: Recipe[]) {
+    setRecipes(recipes: Renewals[]) {
         this.recipes = recipes;
         this.recipesChanged.next(this.recipes.slice());
     }
@@ -41,16 +41,16 @@ export class ClientService{
         return this.recipes[index];
     }
 
-    addIngredientsToShoppingList(ingredients: Ingredient[]){
-        this.slService.addIngredients(ingredients);
+    addIngredientsToShoppingList(renewals: Renewal[]){
+        this.slService.addIngredients(renewals);
     }
 
-    addRecipe(recipe: Recipe){
+    addRecipe(recipe: Renewals){
         this.recipes.push(recipe);
         this.recipesChanged.next(this.recipes.slice());
     }
 
-    updateRecipe(index: number, newRecipe: Recipe){
+    updateRecipe(index: number, newRecipe: Renewals){
         this.recipes[index] = newRecipe;
         this.recipesChanged.next(this.recipes.slice());
     }

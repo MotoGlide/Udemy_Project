@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 
-import { Ingredient } from '../../shared/ingredient.model';
+import { Renewal } from '../../shared/renewal.model';
 import { RenewalListService } from '../renewal-list.service';
 
 @Component({
@@ -15,7 +15,7 @@ export class RenewalEditComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   editMode = false;
   editedItemIndex: number;
-  editedItem: Ingredient;
+  editedItem: Renewal;
 
   constructor(private slService: RenewalListService) { }
 
@@ -36,7 +36,7 @@ export class RenewalEditComponent implements OnInit, OnDestroy {
 
   onSubmit(form: NgForm){
     const value = form.value;
-    const newIngredient = new Ingredient(value.name, value.amount);
+    const newIngredient = new Renewal(value.name, value.amount);
     if (this.editMode){
       this.slService.updateIngredient(this.editedItemIndex, newIngredient);
     } else{

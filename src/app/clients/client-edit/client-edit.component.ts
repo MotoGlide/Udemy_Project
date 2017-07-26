@@ -30,11 +30,11 @@ export class ClientEditComponent implements OnInit {
   }
 
   onSubmit() {
-    // const newRecipe = new Recipe(
+    // const newRecipe = new Renewals(
     //   this.recipeForm.value['name'],
     //   this.recipeForm.value['description'],
     //   this.recipeForm.value['imagePath'],
-    //   this.recipeForm.value['ingredients']);
+    //   this.recipeForm.value['renewals']);
     if (this.editMode) {
       this.recipeService.updateRecipe(this.id, this.recipeForm.value);
     } else {
@@ -44,7 +44,7 @@ export class ClientEditComponent implements OnInit {
   }
 
   onAddIngredient() {
-    (<FormArray>this.recipeForm.get('ingredients')).push(
+    (<FormArray>this.recipeForm.get('renewals')).push(
       new FormGroup({
         'name': new FormControl(null, Validators.required),
         'amount': new FormControl(null, [
@@ -56,7 +56,7 @@ export class ClientEditComponent implements OnInit {
   }
 
   onDeleteIngredient(index: number) {
-    (<FormArray>this.recipeForm.get('ingredients')).removeAt(index);
+    (<FormArray>this.recipeForm.get('renewals')).removeAt(index);
 
   }
 
@@ -76,12 +76,12 @@ export class ClientEditComponent implements OnInit {
       recipeName = recipe.name;
       recipeImagePath = recipe.imagePath;
       recipeDescription = recipe.description;
-      if (recipe['ingredients']) {
-        for (let ingredient of recipe.ingredients) {
+      if (recipe['renewals']) {
+        for (let renewal of recipe.renewals) {
           recipeIngredients.push(
             new FormGroup({
-              'name': new FormControl(ingredient.name, Validators.required),
-              'amount': new FormControl(ingredient.amount, [
+              'name': new FormControl(renewal.name, Validators.required),
+              'amount': new FormControl(renewal.amount, [
                 Validators.required,
                 Validators.pattern(/^[1-9]+[0-9]*$/)
               ])
@@ -94,7 +94,7 @@ export class ClientEditComponent implements OnInit {
       'name': new FormControl(recipeName, Validators.required),
       'imagePath': new FormControl(recipeImagePath, Validators.required),
       'description': new FormControl(recipeDescription, Validators.required),
-      'ingredients': recipeIngredients
+      'renewals': recipeIngredients
     });
   }
 
