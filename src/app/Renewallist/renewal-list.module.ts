@@ -2,17 +2,17 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
-import { ShopListComponent } from './shoplist.component';
-import { ShoppingEditComponent } from './shopping-edit/shopping-edit.component';
+import { RenewalListComponent } from './renewal.component';
+import { RenewalEditComponent } from './renewal-edit/renewal-edit.component';
 
 @NgModule({
   declarations: [
-    ShopListComponent,
-    ShoppingEditComponent
+    RenewalListComponent,
+    RenewalEditComponent
   ],
   imports: [
     CommonModule,
     FormsModule
   ]
 })
-export class ShoppingListModule {}
+export class RenewalListModule {}

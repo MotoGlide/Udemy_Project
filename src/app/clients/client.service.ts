@@ -3,7 +3,7 @@ import { Subject } from 'rxjs/Subject';
 
 import { Recipe } from './client.model';
 import { Ingredient } from '../shared/ingredient.model'
-import { ShoppingListService } from '../shoplist/shopping-list.service'
+import { RenewalListService } from '../renewallist/renewal-list.service'
 
 @Injectable()
 export class ClientService{
@@ -26,7 +26,7 @@ export class ClientService{
         ])
     ];
 
-    constructor(private slService: ShoppingListService){}
+    constructor(private slService: RenewalListService){}
 
     setRecipes(recipes: Recipe[]) {
         this.recipes = recipes;

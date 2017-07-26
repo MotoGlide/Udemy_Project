@@ -3,21 +3,21 @@ import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 
 import { Ingredient } from '../../shared/ingredient.model';
-import { ShoppingListService } from '../shopping-list.service';
+import { RenewalListService } from '../renewal-list.service';
 
 @Component({
-  selector: 'app-shopping-edit',
-  templateUrl: './shopping-edit.component.html',
-  styleUrls: ['./shopping-edit.component.css']
+  selector: 'app-renewal-edit',
+  templateUrl: './renewal-edit.component.html',
+  styleUrls: ['./renewal-edit.component.css']
 })
-export class ShoppingEditComponent implements OnInit, OnDestroy {
+export class RenewalEditComponent implements OnInit, OnDestroy {
   @ViewChild('f') slForm: NgForm;
   subscription: Subscription;
   editMode = false;
   editedItemIndex: number;
   editedItem: Ingredient;
 
-  constructor(private slService: ShoppingListService) { }
+  constructor(private slService: RenewalListService) { }
 
   ngOnInit() {
     this.subscription = this.slService.startedEditing

@@ -2,18 +2,18 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
 import { Ingredient } from '../shared/ingredient.model';
-import { ShoppingListService } from './shopping-list.service';
+import { RenewalListService } from './renewal-list.service';
 
 @Component({
-  selector: 'app-shoplist',
-  templateUrl: './shoplist.component.html',
-  styleUrls: ['./shoplist.component.css']
+  selector: 'app-renewal',
+  templateUrl: './renewal.component.html',
+  styleUrls: ['./renewal.component.css']
 })
-export class ShopListComponent implements OnInit, OnDestroy {
+export class RenewalListComponent implements OnInit, OnDestroy {
   ingredients: Ingredient[];
   private subscription: Subscription;
 
-  constructor(private slService: ShoppingListService) {
+  constructor(private slService: RenewalListService) {
 
    }
 

@@ -5,7 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { SharedModule } from '../shared/shared.module';
 import { AppRoutingModule } from '../app-routing.module';
 
-import { ShoppingListService } from '../shoplist/shopping-list.service';
+import { RenewalListService } from '../renewallist/renewal-list.service';
 import { ClientService } from '../clients/client.service';
 import { DataStorageService } from '../shared/data-storage.service';
 import { AuthService } from '../auth/auth.service';
@@ -24,7 +24,7 @@ import { AuthService } from '../auth/auth.service';
         HeaderComponent
     ],
     providers: [
-        ShoppingListService,
+        RenewalListService,
         ClientService,
         DataStorageService,
         AuthService
