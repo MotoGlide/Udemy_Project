@@ -11,28 +11,28 @@ import { ClientService } from '../client.service';
   styleUrls: ['./client-list.component.css']
 })
 export class ClientListComponent implements OnInit, OnDestroy {
-  recipes:Renewals[];
+  renewals:Renewals[];
   subscription: Subscription;
 
-  constructor(private recipeService: ClientService,
+  constructor(private renewalService: ClientService,
               private router: Router,
               private route: ActivatedRoute) {
 
   }
 
   ngOnInit() {
-    this.subscription = this.recipeService.recipesChanged
+    this.subscription = this.renewalService.recipesChanged
       .subscribe(
-        (recipes: Renewals[]) => {
-          this.recipes = recipes;
+        (renewals: Renewals[]) => {
+          this.renewals = renewals;
         }
       );
-    this.recipes = this.recipeService.getRecipes();
+    this.renewals = this.renewalService.getRecipes();
   }
 
   onNewRecipe(){
     this.router.navigate(['new'], {relativeTo: this.route});
-    //console.log(this.recipes);
+    //console.log(this.renewals);
   }
 
   ngOnDestroy(){

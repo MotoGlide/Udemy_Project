@@ -9,13 +9,13 @@ import { AuthService } from '../auth/auth.service';
 @Injectable()
 export class DataStorageService {
     constructor(private http: Http,
-        private recipeService: ClientService,
+        private renewalService: ClientService,
         private authService: AuthService) { }
 
     storeRecipes() {
         const token = this.authService.getIdToken();
 
-        return this.http.put('https://ng-recipe-book-39cac.firebaseio.com/recipes.json?auth=' + token, this.recipeService.getRecipes());
+        return this.http.put('https://ng-recipe-book-39cac.firebaseio.com/recipes.json?auth=' + token, this.renewalService.getRecipes());
     }
 
     getRecipes() {
@@ -24,18 +24,18 @@ export class DataStorageService {
         this.http.get('https://ng-recipe-book-39cac.firebaseio.com/recipes.json?auth=' + token)
             .map(
             (response: Response) => {
-                const recipes: Renewals[] = response.json();
-                for (let recipe of recipes) {
-                    if (!recipe['renewals']) {
-                        recipe['renewals'] = [];
+                const renewals: Renewals[] = response.json();
+                for (let renewal of renewals) {
+                    if (!renewal['renewals']) {
+                        renewal['renewals'] = [];
                     }
                 }
-                return recipes;
+                return renewals;
             }
             )
             .subscribe(
-            (recipes: Renewals[]) => {
-                this.recipeService.setRecipes(recipes);
+            (renewals: Renewals[]) => {
+                this.renewalService.setRecipes(renewals);
             }
             );
     }

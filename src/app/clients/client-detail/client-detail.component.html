@@ -1,15 +1,15 @@
 <div class="row">
   <div class="col-xs-12">
     <img
-      [src]="recipe.imagePath"
-      alt="{{ recipe.name }}"
+      [src]="renewal.imagePath"
+      alt="{{ renewal.name }}"
       class="img-responsive"
       style="max-height: 150px;">
   </div>
 </div>
 <div class="row">
   <div class="col-xs-12">
-    <h1>{{ recipe.name }}</h1>
+    <h1>{{ renewal.name }}</h1>
   </div>
 </div>
 <hr>
@@ -31,7 +31,7 @@
 <hr>
 <div class="row">
   <div class="col-xs-12">
-    {{ recipe.description }}
+    {{ renewal.description }}
   </div>
 </div>
 <hr>
@@ -40,7 +40,7 @@
     <ul class="list-group">
       <li
         class="list-group-item"
-        *ngFor="let renewal of recipe.renewals">
+        *ngFor="let renewal of renewal.renewals">
         {{ renewal.name }} - {{ renewal.amount }}
       </li>
     </ul>

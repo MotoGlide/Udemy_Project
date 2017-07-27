@@ -8,7 +8,7 @@ import { Renewals } from '../../client.model';
   styleUrls: ['./client-item.component.css']
 })
 export class ClientItemComponent implements OnInit {
-  @Input() recipe: Renewals;
+  @Input() renewal: Renewals;
   @Input() index: number;
 
   ngOnInit() {

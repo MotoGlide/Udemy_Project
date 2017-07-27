@@ -9,7 +9,7 @@ import { RenewalListService } from '../renewallist/renewal-list.service'
 export class ClientService{
     recipesChanged = new Subject<Renewals[]>();
 
-    private recipes: Renewals[] = [
+    private renewals: Renewals[] = [
         new Renewals('Novae Corporation', 'Oliver Reelsen', 'https://upload.wikimedia.org/wikipedia/commons/9/9c/Golden_star.svg', 
         [
             new Renewal('VMware', 1),
@@ -28,35 +28,35 @@ export class ClientService{
 
     constructor(private slService: RenewalListService){}
 
-    setRecipes(recipes: Renewals[]) {
-        this.recipes = recipes;
-        this.recipesChanged.next(this.recipes.slice());
+    setRecipes(renewals: Renewals[]) {
+        this.renewals = renewals;
+        this.recipesChanged.next(this.renewals.slice());
     }
 
     getRecipes(){
-        return this.recipes.slice();
+        return this.renewals.slice();
     }
 
     getRecipe(index: number){
-        return this.recipes[index];
+        return this.renewals[index];
     }
 
     addIngredientsToShoppingList(renewals: Renewal[]){
         this.slService.addIngredients(renewals);
     }
 
-    addRecipe(recipe: Renewals){
-        this.recipes.push(recipe);
-        this.recipesChanged.next(this.recipes.slice());
+    addRecipe(renewal: Renewals){
+        this.renewals.push(renewal);
+        this.recipesChanged.next(this.renewals.slice());
     }
 
     updateRecipe(index: number, newRecipe: Renewals){
-        this.recipes[index] = newRecipe;
-        this.recipesChanged.next(this.recipes.slice());
+        this.renewals[index] = newRecipe;
+        this.recipesChanged.next(this.renewals.slice());
     }
 
     deletedRecipe(index: number){
-        this.recipes.splice(index, 1);
-        this.recipesChanged.next(this.recipes.slice());
+        this.renewals.splice(index, 1);
+        this.recipesChanged.next(this.renewals.slice());
     }
 }

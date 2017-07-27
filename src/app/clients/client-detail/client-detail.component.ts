@@ -10,11 +10,11 @@ import { ClientService } from '../client.service';
   styleUrls: ['./client-detail.component.css']
 })
 export class ClientDetailComponent implements OnInit {
-  recipe: Renewals;
+  renewal: Renewals;
   id: number;
-  recipes:Renewals[];
+  renewals:Renewals[];
 
-  constructor(private recipeService: ClientService,
+  constructor(private renewalService: ClientService,
               private route: ActivatedRoute,
               private router: Router) {
 
@@ -25,23 +25,23 @@ export class ClientDetailComponent implements OnInit {
       .subscribe(
         (params: Params) => {
           this.id = +params['id'];
-          this.recipe = this.recipeService.getRecipe(this.id);
+          this.renewal = this.renewalService.getRecipe(this.id);
         }
       );
   }
 
   onAddToShoppingList(){
-    this.recipeService.addIngredientsToShoppingList(this.recipe.renewals);
+    this.renewalService.addIngredientsToShoppingList(this.renewal.renewals);
   }
 
   onEditRecipe(){
     this.router.navigate(['edit'], {relativeTo: this.route});
     //this.router.navigate(['../', this.id, 'edit'], {relativeTo: this.route});
-    //console.log(this.recipes);
+    //console.log(this.renewals);
   }
 
   onDeleteRecipe(){
-    this.recipeService.deletedRecipe(this.id);
+    this.renewalService.deletedRecipe(this.id);
     this.router.navigate(['/clients']);
   }
 

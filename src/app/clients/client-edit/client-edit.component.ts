@@ -12,10 +12,10 @@ import { ClientService } from '../client.service';
 export class ClientEditComponent implements OnInit {
   id: number;
   editMode = false;
-  recipeForm: FormGroup;
+  renewalForm: FormGroup;
 
   constructor(private route: ActivatedRoute,
-    private recipeService: ClientService,
+    private renewalService: ClientService,
     private router: Router) { }
 
   ngOnInit() {
@@ -31,20 +31,20 @@ export class ClientEditComponent implements OnInit {
 
   onSubmit() {
     // const newRecipe = new Renewals(
-    //   this.recipeForm.value['name'],
-    //   this.recipeForm.value['description'],
-    //   this.recipeForm.value['imagePath'],
-    //   this.recipeForm.value['renewals']);
+    //   this.renewalForm.value['name'],
+    //   this.renewalForm.value['description'],
+    //   this.renewalForm.value['imagePath'],
+    //   this.renewalForm.value['renewals']);
     if (this.editMode) {
-      this.recipeService.updateRecipe(this.id, this.recipeForm.value);
+      this.renewalService.updateRecipe(this.id, this.renewalForm.value);
     } else {
-      this.recipeService.addRecipe(this.recipeForm.value);
+      this.renewalService.addRecipe(this.renewalForm.value);
     }
     this.onCancel();
   }
 
   onAddIngredient() {
-    (<FormArray>this.recipeForm.get('renewals')).push(
+    (<FormArray>this.renewalForm.get('renewals')).push(
       new FormGroup({
         'name': new FormControl(null, Validators.required),
         'amount': new FormControl(null, [
@@ -56,7 +56,7 @@ export class ClientEditComponent implements OnInit {
   }
 
   onDeleteIngredient(index: number) {
-    (<FormArray>this.recipeForm.get('renewals')).removeAt(index);
+    (<FormArray>this.renewalForm.get('renewals')).removeAt(index);
 
   }
 
@@ -65,23 +65,23 @@ export class ClientEditComponent implements OnInit {
   }
 
   private initForm() {
-    let recipeName = '';
-    let recipeImagePath = '';
-    let recipeDescription = '';
-    let recipeIngredients = new FormArray([]);
+    let renewalName = '';
+    let renewalImagePath = '';
+    let renewalDescription = '';
+    let renewalList = new FormArray([]);
 
 
     if (this.editMode) {
-      const recipe = this.recipeService.getRecipe(this.id);
-      recipeName = recipe.name;
-      recipeImagePath = recipe.imagePath;
-      recipeDescription = recipe.description;
-      if (recipe['renewals']) {
-        for (let renewal of recipe.renewals) {
-          recipeIngredients.push(
+      const renewal = this.renewalService.getRecipe(this.id);
+      renewalName = renewal.name;
+      renewalImagePath = renewal.imagePath;
+      renewalDescription = renewal.description;
+      if (renewal['renewals']) {
+        for (let list of renewal.renewals) {
+          renewalList.push(
             new FormGroup({
-              'name': new FormControl(renewal.name, Validators.required),
-              'amount': new FormControl(renewal.amount, [
+              'name': new FormControl(list.name, Validators.required),
+              'amount': new FormControl(list.amount, [
                 Validators.required,
                 Validators.pattern(/^[1-9]+[0-9]*$/)
               ])
@@ -90,11 +90,11 @@ export class ClientEditComponent implements OnInit {
         }
       }
     }
-    this.recipeForm = new FormGroup({
-      'name': new FormControl(recipeName, Validators.required),
-      'imagePath': new FormControl(recipeImagePath, Validators.required),
-      'description': new FormControl(recipeDescription, Validators.required),
-      'renewals': recipeIngredients
+    this.renewalForm = new FormGroup({
+      'name': new FormControl(renewalName, Validators.required),
+      'imagePath': new FormControl(renewalImagePath, Validators.required),
+      'description': new FormControl(renewalDescription, Validators.required),
+      'renewals': renewalList
     });
   }
 
