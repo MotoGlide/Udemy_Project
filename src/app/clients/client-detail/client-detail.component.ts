@@ -30,17 +30,17 @@ export class ClientDetailComponent implements OnInit {
       );
   }
 
-  onAddToShoppingList(){
+  onAddToRenewalListing(){
     this.renewalService.addIngredientsToShoppingList(this.renewal.renewals);
   }
 
-  onEditRecipe(){
+  onEditRenewalListing(){
     this.router.navigate(['edit'], {relativeTo: this.route});
     //this.router.navigate(['../', this.id, 'edit'], {relativeTo: this.route});
     //console.log(this.renewals);
   }
 
-  onDeleteRecipe(){
+  onDeleteRenewalListing(){
     this.renewalService.deletedRecipe(this.id);
     this.router.navigate(['/clients']);
   }

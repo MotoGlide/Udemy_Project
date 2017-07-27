@@ -43,7 +43,7 @@ export class ClientEditComponent implements OnInit {
     this.onCancel();
   }
 
-  onAddIngredient() {
+  onAddRenewal() {
     (<FormArray>this.renewalForm.get('renewals')).push(
       new FormGroup({
         'name': new FormControl(null, Validators.required),
@@ -55,7 +55,7 @@ export class ClientEditComponent implements OnInit {
     );
   }
 
-  onDeleteIngredient(index: number) {
+  onDeleteRenewal(index: number) {
     (<FormArray>this.renewalForm.get('renewals')).removeAt(index);
 
   }
